@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="helpers.BuddyInfoTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2019-11-04T17:02:41" hostname="DESKTOP-APVRDH2" time="3.998">
+  <properties/>
+  <testcase name="getGreeting()" classname="helpers.BuddyInfoTest" time="0.188"/>
+  <testcase name="getPhoneNumber()" classname="helpers.BuddyInfoTest" time="0.015"/>
+  <testcase name="getAge()" classname="helpers.BuddyInfoTest" time="0.001"/>
+  <testcase name="testToString()" classname="helpers.BuddyInfoTest" time="2.299"/>
+  <testcase name="setAge()" classname="helpers.BuddyInfoTest" time="0.002"/>
+  <testcase name="isOver18()" classname="helpers.BuddyInfoTest" time="0.002"/>
+  <testcase name="getName()" classname="helpers.BuddyInfoTest" time="0.008"/>
+  <testcase name="setHomeAddress()" classname="helpers.BuddyInfoTest" time="0.022"/>
+  <testcase name="setPhoneNumber()" classname="helpers.BuddyInfoTest" time="0.012"/>
+  <testcase name="testEquals()" classname="helpers.BuddyInfoTest" time="0.453"/>
+  <testcase name="setName()" classname="helpers.BuddyInfoTest" time="0.014"/>
+  <testcase name="getHomeAddress()" classname="helpers.BuddyInfoTest" time="0.012"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
