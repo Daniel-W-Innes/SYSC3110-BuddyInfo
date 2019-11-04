@@ -24,9 +24,8 @@ public class AddressBook implements ListModel<BuddyInfo> {
         }
     }
 
-    private void removeBuddy(int index) {
-        buddies.remove(index);
-        updateListeners();
+    public boolean contains(BuddyInfo buddyInfo) {
+        return buddies.contains(buddyInfo);
     }
 
     public void removeBuddy(BuddyInfo buddyInfo) {
@@ -48,8 +47,9 @@ public class AddressBook implements ListModel<BuddyInfo> {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof AddressBook)) return false;
-        return super.equals(o);
+        if (null == o || getClass() != o.getClass()) return false;
+        AddressBook addressBook = (AddressBook) o;
+        return buddies.equals(addressBook.buddies) && listeners.equals(addressBook.listeners);
     }
 
     @Override
