@@ -21,12 +21,12 @@ public class GUI extends JFrame {
         menuBar.add(editMenu);
 
         JMenuItem addBuddy = new JMenuItem("Add new Buddy", KeyEvent.VK_A);
-        addBuddy.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1, InputEvent.ALT_DOWN_MASK ));
+        addBuddy.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1, InputEvent.ALT_DOWN_MASK));
         addBuddy.addActionListener(new AddBuddy(this, addressBook));
         editMenu.add(addBuddy);
 
         JMenuItem removeBuddy = new JMenuItem("Remove Buddy", KeyEvent.VK_R);
-        removeBuddy.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_2, InputEvent.ALT_DOWN_MASK ));
+        removeBuddy.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_2, InputEvent.ALT_DOWN_MASK));
         removeBuddy.addActionListener(new RemoveBuddy(this, addressBook));
         editMenu.add(removeBuddy);
 

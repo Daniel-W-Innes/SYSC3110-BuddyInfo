@@ -16,8 +16,8 @@ public class RemoveBuddy extends BuddyActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         JOptionPane.showMessageDialog(frame, panel, "Remove Buddy", JOptionPane.QUESTION_MESSAGE);
-        if (!username.getText().equals("") && !homeAddress.getText().equals("") && !homeAddress.getText().equals(""))
-            addressBook.removeBuddy(new BuddyInfo(username.getText(), homeAddress.getText(), phoneNumber.getText()));
+        if (!username.getText().equals("") && !homeAddress.getText().equals("") && !homeAddress.getText().equals("") && !age.getText().equals(""))
+            addressBook.removeBuddy(new BuddyInfo(username.getText(), homeAddress.getText(), phoneNumber.getText(), Integer.parseInt(age.getText())));
     }
 
 }

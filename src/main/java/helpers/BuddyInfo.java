@@ -1,17 +1,40 @@
 package helpers;
 
+import java.util.Calendar;
+
 public class BuddyInfo {
     private String name;
     private String homeAddress;
     private String phoneNumber;
+    private int age;
 
-    public BuddyInfo(String name, String homeAddress, String phoneNumber) {
+    public BuddyInfo(String name, String homeAddress, String phoneNumber, int age) {
         this.name = name;
         this.homeAddress = homeAddress;
         this.phoneNumber = phoneNumber;
+        this.age = age;
     }
 
-    private String getName() {
+    public BuddyInfo(BuddyInfo buddyInfo) {
+        name = buddyInfo.getName();
+        homeAddress = buddyInfo.homeAddress;
+        phoneNumber = buddyInfo.phoneNumber;
+        age = buddyInfo.age;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public boolean isOver18() {
+        return age > 18;
+    }
+
+    public String getName() {
         return name;
     }
 
@@ -19,7 +42,7 @@ public class BuddyInfo {
         this.name = name;
     }
 
-    private String getHomeAddress() {
+    public String getHomeAddress() {
         return homeAddress;
     }
 
@@ -27,7 +50,7 @@ public class BuddyInfo {
         this.homeAddress = homeAddress;
     }
 
-    private String getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
@@ -35,10 +58,28 @@ public class BuddyInfo {
         this.phoneNumber = phoneNumber;
     }
 
+    public String getGreeting() {
+        Calendar c = Calendar.getInstance();
+        int timeOfDay = c.get(Calendar.HOUR_OF_DAY);
+        StringBuilder stringBuilder = new StringBuilder();
+        if (timeOfDay < 12) {
+            stringBuilder.append("Good Morning");
+        } else if (timeOfDay < 16) {
+            stringBuilder.append("Good Afternoon");
+        } else if (timeOfDay < 21) {
+            stringBuilder.append("Good Evening");
+        } else {
+            stringBuilder.append("Good Night");
+        }
+        stringBuilder.append(' ');
+        stringBuilder.append(name);
+        stringBuilder.append(',');
+        return stringBuilder.toString();
+    }
 
     @Override
     public String toString() {
-        return "Name: " + name + ", Phone Number: " + phoneNumber + ", Home Address: " + homeAddress;
+        return "Name: " + name + ", Phone Number: " + phoneNumber + ", Home Address: " + homeAddress + ", Home Address: " + age;
     }
 
 
@@ -47,6 +88,6 @@ public class BuddyInfo {
         if (this == o) return true;
         if (null == o || getClass() != o.getClass()) return false;
         BuddyInfo buddyInfo = (BuddyInfo) o;
-        return getName().equals(buddyInfo.getName()) && getHomeAddress().equals(buddyInfo.getHomeAddress()) && getPhoneNumber().equals(buddyInfo.getPhoneNumber());
+        return getName().equals(buddyInfo.getName()) && getHomeAddress().equals(buddyInfo.getHomeAddress()) && getPhoneNumber().equals(buddyInfo.getPhoneNumber()) && getAge() == buddyInfo.getAge();
     }
 }

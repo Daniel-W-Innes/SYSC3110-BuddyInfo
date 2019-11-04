@@ -5,13 +5,24 @@ plugins {
 group 'Daniel-W-Innes'
 version '1.0-SNAPSHOT'
 
-sourceCompatibility = 13
+sourceCompatibility = 11
+targetCompatibility = 11
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    // https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api
-    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.6.0-M1'
+    implementation 'com.google.guava:guava:28.1-jre'
+
+    // https://mvnrepository.com/artifact/org.junit.jupiter
+    testImplementation  group: 'org.junit.jupiter', name: 'junit-jupiter-params', version: '5.6.0-M1'
+    testImplementation  group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.6.0-M1'
+    testRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.6.0-M1'
+}
+
+test {
+    useJUnitPlatform {
+        includeEngines 'junit-jupiter'
+    }
 }

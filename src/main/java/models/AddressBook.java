@@ -15,18 +15,6 @@ public class AddressBook implements ListModel<BuddyInfo> {
     public AddressBook() {
         buddies = new ArrayList<>();
         listeners = new ArrayList<>();
-        BuddyInfo buddy = new BuddyInfo("Tom", "Carleton", "613");
-        addBuddy(buddy);
-        addBuddy(new BuddyInfo("Ben", "Carleton", "613"));
-    }
-
-    public static void main(String[] args) {
-        BuddyInfo buddy = new BuddyInfo("Tom", "Carleton", "613");
-        AddressBook addressBook = new AddressBook();
-        addressBook.addBuddy(buddy);
-        addressBook.addBuddy(new BuddyInfo("Ben", "Carleton", "613"));
-        System.out.print(addressBook.toString());
-        addressBook.removeBuddy(0);
     }
 
     public void addBuddy(BuddyInfo buddyInfo) {
@@ -51,6 +39,10 @@ public class AddressBook implements ListModel<BuddyInfo> {
         for (ListDataListener l : listeners) {
             l.contentsChanged(le);
         }
+    }
+
+    public void clear() {
+        buddies.clear();
     }
 
     @Override
