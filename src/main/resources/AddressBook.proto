@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+import "BuddyInfo.proto";
+
+message AddressBook {
+    repeated BuddyInfo buddyInfo = 1;
+}

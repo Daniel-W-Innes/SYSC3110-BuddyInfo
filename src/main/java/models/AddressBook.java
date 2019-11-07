@@ -1,12 +1,17 @@
 package models;
 
 import helpers.BuddyInfo;
+import protos.AddressBookOuterClass;
 
 import javax.swing.*;
 import javax.swing.event.ListDataEvent;
 import javax.swing.event.ListDataListener;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class AddressBook implements ListModel<BuddyInfo> {
     private final List<BuddyInfo> buddies;
@@ -42,6 +47,22 @@ public class AddressBook implements ListModel<BuddyInfo> {
 
     public void clear() {
         buddies.clear();
+    }
+
+    public void save(String filepath) throws IOException {
+        AddressBookOuterClass.AddressBook.newBuilder()
+                .addAllBuddyInfo(buddies.stream()
+                        .map(BuddyInfo::getProto)
+                        .collect(Collectors.toList())).build()
+                .writeTo(new FileOutputStream(filepath));
+    }
+
+    public void load(String filename) throws IOException {
+        buddies.addAll(AddressBookOuterClass.AddressBook.parseFrom(new FileInputStream(filename))
+                .getBuddyInfoList().stream()
+                .map(BuddyInfo::new)
+                .collect(Collectors.toList()));
+        updateListeners();
     }
 
     @Override

@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+message BuddyInfo {
+    string name = 1;
+    string homeAddress = 2;
+    string phoneNumber = 3;
+    int32 age = 4;
+}

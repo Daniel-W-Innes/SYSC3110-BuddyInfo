@@ -1,5 +1,8 @@
 package helpers;
 
+
+import protos.BuddyInfoOuterClass;
+
 import java.util.Calendar;
 
 public class BuddyInfo {
@@ -20,6 +23,13 @@ public class BuddyInfo {
         homeAddress = buddyInfo.homeAddress;
         phoneNumber = buddyInfo.phoneNumber;
         age = buddyInfo.age;
+    }
+
+    public BuddyInfo(BuddyInfoOuterClass.BuddyInfo buddyInfo) {
+        name = buddyInfo.getName();
+        homeAddress = buddyInfo.getHomeAddress();
+        phoneNumber = buddyInfo.getPhoneNumber();
+        age = buddyInfo.getAge();
     }
 
     public int getAge() {
@@ -75,6 +85,15 @@ public class BuddyInfo {
         stringBuilder.append(name);
         stringBuilder.append(',');
         return stringBuilder.toString();
+    }
+
+    public BuddyInfoOuterClass.BuddyInfo getProto() {
+        return BuddyInfoOuterClass.BuddyInfo.newBuilder()
+                .setName(name)
+                .setHomeAddress(homeAddress)
+                .setPhoneNumber(phoneNumber)
+                .setAge(age)
+                .build();
     }
 
     @Override
