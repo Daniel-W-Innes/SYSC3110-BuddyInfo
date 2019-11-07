@@ -17,18 +17,14 @@ public class EditBuddy extends BuddyActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        name.setText(((BuddyInfo) jList.getSelectedValue()).getName());
+        homeAddress.setText(((BuddyInfo) jList.getSelectedValue()).getHomeAddress());
+        phoneNumber.setText(((BuddyInfo) jList.getSelectedValue()).getPhoneNumber());
+        age.setText(String.valueOf(((BuddyInfo) jList.getSelectedValue()).getAge()));
         JOptionPane.showMessageDialog(parentComponent, panel, "Edit Buddy", JOptionPane.QUESTION_MESSAGE);
-        if (!name.getText().equals("")) {
-            ((BuddyInfo) jList.getSelectedValue()).setName(name.getText());
-        }
-        if (!homeAddress.getText().equals("")) {
-            ((BuddyInfo) jList.getSelectedValue()).setHomeAddress(homeAddress.getText());
-        }
-        if (!phoneNumber.getText().equals("")) {
-            ((BuddyInfo) jList.getSelectedValue()).setPhoneNumber(phoneNumber.getText());
-        }
-        if (!age.getText().equals("")) {
-            ((BuddyInfo) jList.getSelectedValue()).setAge(Integer.parseInt(age.getText()));
-        }
+        ((BuddyInfo) jList.getSelectedValue()).setName(name.getText());
+        ((BuddyInfo) jList.getSelectedValue()).setHomeAddress(homeAddress.getText());
+        ((BuddyInfo) jList.getSelectedValue()).setPhoneNumber(phoneNumber.getText());
+        ((BuddyInfo) jList.getSelectedValue()).setAge(Integer.parseInt(age.getText()));
     }
 }
