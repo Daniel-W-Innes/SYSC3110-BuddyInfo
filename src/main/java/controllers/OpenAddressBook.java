@@ -22,7 +22,7 @@ public class OpenAddressBook implements ActionListener {
             AddressBook addressBook = new AddressBook();
             addressBook.load(JOptionPane.showInputDialog("Please inout a filename"));
             new GUI(addressBook, exitManager);
-        } catch (IOException ex) {
+        } catch (IOException | ClassNotFoundException ex) {
             ex.printStackTrace();
         }
     }

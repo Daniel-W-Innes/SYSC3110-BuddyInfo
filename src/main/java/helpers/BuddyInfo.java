@@ -3,9 +3,10 @@ package helpers;
 
 import protos.BuddyInfoOuterClass;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
-public class BuddyInfo {
+public class BuddyInfo implements Serializable {
     private String name;
     private String homeAddress;
     private String phoneNumber;

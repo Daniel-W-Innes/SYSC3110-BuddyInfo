@@ -1,21 +1,17 @@
 package models;
 
 import helpers.BuddyInfo;
-import protos.AddressBookOuterClass;
 
 import javax.swing.*;
 import javax.swing.event.ListDataEvent;
 import javax.swing.event.ListDataListener;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
-public class AddressBook implements ListModel<BuddyInfo> {
+public class AddressBook implements ListModel<BuddyInfo>, Serializable {
     private final List<BuddyInfo> buddies;
-    private final List<ListDataListener> listeners;
+    private final transient List<ListDataListener> listeners;
 
     public AddressBook() {
         buddies = new ArrayList<>();
@@ -50,18 +46,15 @@ public class AddressBook implements ListModel<BuddyInfo> {
     }
 
     public void save(String filepath) throws IOException {
-        AddressBookOuterClass.AddressBook.newBuilder()
-                .addAllBuddyInfo(buddies.stream()
-                        .map(BuddyInfo::getProto)
-                        .collect(Collectors.toList())).build()
-                .writeTo(new FileOutputStream(filepath));
+        FileOutputStream file = new FileOutputStream(filepath);
+        ObjectOutputStream out = new ObjectOutputStream(file);
+        out.writeObject(this);
     }
 
-    public void load(String filename) throws IOException {
-        buddies.addAll(AddressBookOuterClass.AddressBook.parseFrom(new FileInputStream(filename))
-                .getBuddyInfoList().stream()
-                .map(BuddyInfo::new)
-                .collect(Collectors.toList()));
+    public void load(String filepath) throws IOException, ClassNotFoundException {
+        FileInputStream file = new FileInputStream(filepath);
+        ObjectInputStream in = new ObjectInputStream(file);
+        buddies.addAll(((AddressBook) in.readObject()).buddies);
         updateListeners();
     }
 

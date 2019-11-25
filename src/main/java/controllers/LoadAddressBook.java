@@ -18,7 +18,7 @@ public class LoadAddressBook implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         try {
             addressBook.load(JOptionPane.showInputDialog("Please inout a filename"));
-        } catch (IOException ex) {
+        } catch (IOException | ClassNotFoundException ex) {
             ex.printStackTrace();
         }
     }

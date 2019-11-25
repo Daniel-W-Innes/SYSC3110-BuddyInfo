@@ -34,7 +34,6 @@ public class GUI extends JFrame {
         setLayout(new BorderLayout());
         setJMenuBar(getNewMenuBar(addressBook));
         add(new AddressBookDisplay<>(addressBook), BorderLayout.CENTER);
-        setSize(400, 500);
         pack();
         setTitle("Address Book");
         addWindowListener(exitManager);
