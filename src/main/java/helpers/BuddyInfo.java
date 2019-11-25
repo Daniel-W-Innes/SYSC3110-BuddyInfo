@@ -98,9 +98,13 @@ public class BuddyInfo {
 
     @Override
     public String toString() {
-        return "Name: " + name + ", Phone Number: " + phoneNumber + ", Home Address: " + homeAddress + ", Home Address: " + age;
+        return "Name: " + name + ", Phone Number: " + phoneNumber + ", Home Address: " + homeAddress + ", Age: " + age;
     }
 
+
+    public String toXML() {
+        return "<BuddyInfo>" + "<Name>" + name + "</Name>" + "<PhoneNumber>" + phoneNumber + "</PhoneNumber>" + "<HomeAddress>" + homeAddress + "</HomeAddress>" + "<Age>" + age + "</Age>" + "</BuddyInfo>";
+    }
 
     @Override
     public boolean equals(Object o) {
