@@ -7,6 +7,7 @@ import helpers.BuddyInfo;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -110,5 +111,21 @@ class AddressBookTest {
             addressBook.addBuddy(buddyInfo);
         }
         assertEquals(5, addressBook.getSize());
+    }
+
+    @Test
+    void testSaveAndLoad() {
+        AddressBook addressBook = new AddressBook();
+        for (BuddyInfo buddyInfo : buddyInfos) {
+            addressBook.addBuddy(buddyInfo);
+        }
+        try {
+            addressBook.save("test");
+            AddressBook newAddressBook = new AddressBook();
+            newAddressBook.load("test");
+            assertEquals(newAddressBook, addressBook);
+        } catch (IOException | ClassNotFoundException e) {
+            fail();
+        }
     }
 }
