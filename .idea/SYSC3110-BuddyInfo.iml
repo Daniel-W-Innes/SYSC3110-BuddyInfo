@@ -11,5 +11,8 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Bundled Protobuf Distribution" level="application" />
+    <orderEntry type="library" name="com.google.guava:guava:28.1-jre" level="project" />
+    <orderEntry type="library" name="com.google.protobuf:protobuf-java:3.11.0" level="project" />
+    <orderEntry type="library" name="org.junit.jupiter:junit-jupiter-api:5.6.0-M1" level="project" />
   </component>
 </module>

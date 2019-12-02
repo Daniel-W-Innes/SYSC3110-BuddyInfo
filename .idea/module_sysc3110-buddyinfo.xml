@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_sysc3110-buddyinfo" default="compile.module.sysc3110-buddyinfo">
+  <dirname property="module.sysc3110-buddyinfo.basedir" file="${ant.file.module_sysc3110-buddyinfo}"/>
+  
+  <property name="module.jdk.home.sysc3110-buddyinfo" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.sysc3110-buddyinfo" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.sysc3110-buddyinfo" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.sysc3110-buddyinfo" value="-encoding UTF-8 -source 13 -target 13 ${compiler.args}"/>
+  
+  <property name="sysc3110-buddyinfo.output.dir" value="${module.sysc3110-buddyinfo.basedir}/../out/production/SYSC3110-BuddyInfo"/>
+  <property name="sysc3110-buddyinfo.testoutput.dir" value="${module.sysc3110-buddyinfo.basedir}/../out/test/SYSC3110-BuddyInfo"/>
+  
+  <path id="sysc3110-buddyinfo.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="sysc3110-buddyinfo.module.production.classpath">
+    <path refid="${module.jdk.classpath.sysc3110-buddyinfo}"/>
+    <path refid="library.bundled_protobuf_distribution.classpath"/>
+  </path>
+  
+  <path id="sysc3110-buddyinfo.runtime.production.module.classpath">
+    <pathelement location="${sysc3110-buddyinfo.output.dir}"/>
+    <path refid="library.bundled_protobuf_distribution.classpath"/>
+  </path>
+  
+  <path id="sysc3110-buddyinfo.module.classpath">
+    <path refid="${module.jdk.classpath.sysc3110-buddyinfo}"/>
+    <pathelement location="${sysc3110-buddyinfo.output.dir}"/>
+    <path refid="library.bundled_protobuf_distribution.classpath"/>
+  </path>
+  
+  <path id="sysc3110-buddyinfo.runtime.module.classpath">
+    <pathelement location="${sysc3110-buddyinfo.testoutput.dir}"/>
+    <pathelement location="${sysc3110-buddyinfo.output.dir}"/>
+    <path refid="library.bundled_protobuf_distribution.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.sysc3110-buddyinfo">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.sysc3110-buddyinfo">
+    <patternset refid="excluded.from.module.sysc3110-buddyinfo"/>
+  </patternset>
+  
+  <path id="sysc3110-buddyinfo.module.sourcepath">
+    <dirset dir="${module.sysc3110-buddyinfo.basedir}/../../SYSC3110-BuddyInfo">
+      <include name="src/main/java"/>
+      <include name="src/main/resources"/>
+    </dirset>
+  </path>
+  
+  <path id="sysc3110-buddyinfo.module.test.sourcepath">
+    <dirset dir="${module.sysc3110-buddyinfo.basedir}/../../SYSC3110-BuddyInfo">
+      <include name="src/test/java"/>
+      <include name="src/test/resources"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.sysc3110-buddyinfo" depends="compile.module.sysc3110-buddyinfo.production,compile.module.sysc3110-buddyinfo.tests" description="Compile module SYSC3110-BuddyInfo"/>
+  
+  <target name="compile.module.sysc3110-buddyinfo.production" depends="register.custom.compilers" description="Compile module SYSC3110-BuddyInfo; production classes">
+    <mkdir dir="${sysc3110-buddyinfo.output.dir}"/>
+    <javac2 destdir="${sysc3110-buddyinfo.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.sysc3110-buddyinfo}/javac">
+      <compilerarg line="${compiler.args.sysc3110-buddyinfo}"/>
+      <bootclasspath refid="sysc3110-buddyinfo.module.bootclasspath"/>
+      <classpath refid="sysc3110-buddyinfo.module.production.classpath"/>
+      <src refid="sysc3110-buddyinfo.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.sysc3110-buddyinfo"/>
+    </javac2>
+    
+    <copy todir="${sysc3110-buddyinfo.output.dir}">
+      <fileset dir="${module.sysc3110-buddyinfo.basedir}/../src/main/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.sysc3110-buddyinfo.basedir}/../src/main/resources">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.sysc3110-buddyinfo.tests" depends="register.custom.compilers,compile.module.sysc3110-buddyinfo.production" description="compile module SYSC3110-BuddyInfo; test classes" unless="skip.tests">
+    <mkdir dir="${sysc3110-buddyinfo.testoutput.dir}"/>
+    <javac2 destdir="${sysc3110-buddyinfo.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.sysc3110-buddyinfo}/javac">
+      <compilerarg line="${compiler.args.sysc3110-buddyinfo}"/>
+      <bootclasspath refid="sysc3110-buddyinfo.module.bootclasspath"/>
+      <classpath refid="sysc3110-buddyinfo.module.classpath"/>
+      <src refid="sysc3110-buddyinfo.module.test.sourcepath"/>
+      <patternset refid="excluded.from.compilation.sysc3110-buddyinfo"/>
+    </javac2>
+    
+    <copy todir="${sysc3110-buddyinfo.testoutput.dir}">
+      <fileset dir="${module.sysc3110-buddyinfo.basedir}/../src/test/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.sysc3110-buddyinfo.basedir}/../src/test/resources">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="clean.module.sysc3110-buddyinfo" description="cleanup module">
+    <delete dir="${sysc3110-buddyinfo.output.dir}"/>
+    <delete dir="${sysc3110-buddyinfo.testoutput.dir}"/>
+  </target>
+</project>
