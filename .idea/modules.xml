@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BuddyInfo.iml" filepath="$PROJECT_DIR$/.idea/modules/BuddyInfo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BuddyInfo.main.iml" filepath="$PROJECT_DIR$/.idea/modules/BuddyInfo.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BuddyInfo.test.iml" filepath="$PROJECT_DIR$/.idea/modules/BuddyInfo.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/SYSC3110-BuddyInfo.iml" filepath="$PROJECT_DIR$/.idea/SYSC3110-BuddyInfo.iml" />
     </modules>
   </component>
